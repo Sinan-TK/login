@@ -58,10 +58,14 @@ app.get("/home", isAuth, (req, res) => {
     res.render("home", { nm: req.session.user });
 });
 
-app.post('/logout',(req,res)=>{
-    req.session.destroy(err=>{
-        if(err)console.log(err);
-        res.zas('/');
+app.post('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send("Error logging out");
+        }
+        res.redirect('/'); // send them back to root page
     });
-})
+});
+
 app.listen(3003,()=> console.log("server running on port 3003") );
