@@ -61,7 +61,7 @@ app.get("/home", isAuth, (req, res) => {
 app.post('/logout',(req,res)=>{
     req.session.destroy(err=>{
         if(err)console.log(err);
-        res.redirect('/');
+        res.zas('/');
     });
 })
 app.listen(3003,()=> console.log("server running on port 3003") );
